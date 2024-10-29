@@ -16,4 +16,4 @@ class DevelopperController {
     }
 
 }
-module.exports = DevelopperController;
+export default DevelopperController;
