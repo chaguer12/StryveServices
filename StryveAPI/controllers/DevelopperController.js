@@ -7,6 +7,9 @@ class DevelopperController {
     }
     static create(req, res){
         const newDevelopper = req.body;
+        if(!newDevelopper.name || !newDevelopper.skillLevel || !newDevelopper.maxHours || !newDevelopper.preferredTaskType){
+            return res.status(400).json({error: 'Missing required fields'});
+        }
         const addedDevelopper = developperService.addDevelopper(newDevelopper);
         res.status(201).json(addedDevelopper);
 

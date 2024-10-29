@@ -1,4 +1,4 @@
-const developpers = requrie('../models/developers')
+const developpers = require('../models/developers')
 class DevelopperService{
     static getDeveloppers(){
         return developpers;

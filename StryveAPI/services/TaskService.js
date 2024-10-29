@@ -1,4 +1,4 @@
-const tasks = requrie('../models/tasks')
+const tasks = require('../models/tasks')
 
 class TaskService{
     static getTasks(){
