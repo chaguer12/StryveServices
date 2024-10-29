@@ -1,4 +1,6 @@
 const taskService = require('../services/TaskService');
+const {tasks} = require('../models/tasks')
+const {developpers} = require('../models/developers')
 
 class TaskController{
     static getAll(req, res){
@@ -14,6 +16,11 @@ class TaskController{
         const addedTask = taskService.addTask(newTask);
         res.status(201).json(addedTask);
 
+    }
+
+    static assign(req,res){
+        const result = taskService.assignTasksWithPriorityAndDependencies(tasks,developpers);
+        res.status(200).json(result); 
     }
 }
 

@@ -1,5 +1,5 @@
-const tasks = require('../models/tasks')
-const developpers = require('../models/developers')
+const {tasks} = require('../models/tasks')
+const {developpers} = require('../models/developers')
 
 class TaskService{
     
@@ -33,6 +33,17 @@ class TaskService{
         });
         if(findDevelopper){
             const developperAssignment = developperAssignment.find(dev => dev.name === findDevelopper.name);
+            developperAssignment.assignedTasks.push(task.taskName);
+            developperAssignment.hours += task.hoursRequired;
+            findDevelopper.maxHours -= task.hoursRequired;
+            assignedTasks.push(task);
+
+        }else{
+            unassignedTasks.push(task);
+        }
+        return {
+            assignedTasks: devTasks,
+            unassignedTasks
         }
     }
 
